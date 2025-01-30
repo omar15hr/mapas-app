@@ -5,6 +5,8 @@ import "@maptiler/sdk/dist/maptiler-sdk.css";
 import * as maptilersdk from "@maptiler/sdk";
 import { MapContext } from "../context/map/MapContext";
 
+const apiKey = import.meta.env.VITE_MAPTILER_API_KEY;
+
 export const MapView = () => {
 
   const { isLoading, userLocation } = useContext(PlacesContext);
@@ -12,7 +14,7 @@ export const MapView = () => {
   const map = useRef<maptilersdk.Map | null>(null);
   const { setMap } = useContext(MapContext);
 
-  maptilersdk.config.apiKey = "XUGy7eUo2AC2j8vRzhwf";
+  maptilersdk.config.apiKey = apiKey;
 
   useEffect(() => {
     if (!mapContainer.current || !userLocation) return;
