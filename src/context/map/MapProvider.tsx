@@ -22,9 +22,14 @@ export const MapProvider = ({children}: Props) => {
 
   const [state, dispatch] = useReducer(MapReducer, initialState);
 
+  const setMap = (map: Map) => {
+    dispatch({ type: 'setMap', payload: map });
+  }
+
   return (
     <MapContext.Provider value={{
-      ...state
+      ...state,
+      setMap,
     }}>
       {children}
     </MapContext.Provider>
